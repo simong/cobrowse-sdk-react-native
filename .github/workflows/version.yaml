@@ -1,0 +1,17 @@
+name: Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      args:
+        description: "standard-version arguments (e.g. --release-as minor --prerelease alpha)"
+        required: false
+        default: ""
+
+jobs:
+  version:
+    uses: cobrowseio/actions/.github/workflows/version.yml@44c505778466cd06e52bd2726208012a61bf984c
+    with:
+      args: ${{ inputs.args }}
+    secrets:
+      COBROWSE_BOT_KEY: ${{ secrets.COBROWSE_BOT_KEY }}
